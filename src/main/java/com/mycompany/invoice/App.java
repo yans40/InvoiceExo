@@ -2,6 +2,7 @@ package com.mycompany.invoice;
 
 import com.mycompany.invoice.entity.Invoice;
 import com.mycompany.invoice.service.InvoiceService;
+import com.mycompany.invoice.service.InvoiceServiceMichel;
 
 import java.util.Scanner;
 
@@ -19,8 +20,16 @@ public class App
 
         Invoice invoice = new Invoice();
         invoice.setCustomerName(customerName);
-
-        InvoiceService invoiceService = new InvoiceService();
+        System.out.println("Dans quelle configuration êtes vous ?");
+        int configuration= sc.nextInt();
+        if(configuration == 1){
+            InvoiceService invoiceService = new InvoiceService();
+            invoiceService.createInvoice(invoice);
+        }
+        else if(configuration==2){
+        InvoiceServiceMichel invoiceService = new InvoiceServiceMichel();
         invoiceService.createInvoice(invoice);
+    }
+
     }
 }
